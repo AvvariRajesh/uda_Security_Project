@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.udasecurity.gui.MainController">
+
+    <!-- Top section -->
+    <top>
+        <HBox spacing="10" alignment="CENTER" style="-fx-background-color: #2b2b2b;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="UdaSecurity System"
+                   style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="armSystemButton" text="Arm System" onAction="#armSystem"/>
+            <Button fx:id="disarmSystemButton" text="Disarm System" onAction="#disarmSystem"/>
+        </HBox>
+    </top>
+
+    <!-- Center section -->
+    <center>
+    <VBox spacing="10" alignment="CENTER">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <!-- System Status Label -->
+        <Label fx:id="systemStatusLabel"
+               text="System Status: Not available"
+               style="-fx-font-size: 16px; -fx-text-fill: black; -fx-font-weight: bold;"/>
+
+        <!-- Image View -->
+        <ImageView fx:id="cat_placeholder"
+                   fitWidth="300"
+                   fitHeight="200"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/images/no_cat_placeholder.png"/>
+            </image>
+        </ImageView>
+
+        <!-- NEW: Refresh Camera Button -->
+        <Button fx:id="refreshButton" text="Refresh Camera" />
+
+        <Label fx:id="controlstatusLabel"
+               text="System Control Status: DISARMED"
+               style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+
+        <Separator/>
+
+        <Label text="Sensor Management"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <TableView fx:id="sensorTable" prefHeight="200" prefWidth="400">
+            <columns>
+                <TableColumn fx:id="sensorNameColumn" text="Sensor Name" prefWidth="200"/>
+                <TableColumn fx:id="sensorTypeColumn" text="Sensor Type" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </VBox>
+</center>
+
+
+    <!-- Bottom section -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <TextField fx:id="sensorNameField" promptText="Sensor Name"/>
+            <ComboBox fx:id="sensorTypeCombo" promptText="Type" prefWidth="150"/>
+            <Button fx:id="addSensorButton" text="Add Sensor"/>
+            <Button fx:id="removeSensorButton" text="Remove Selected"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

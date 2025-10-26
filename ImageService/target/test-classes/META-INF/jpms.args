@@ -1,0 +1,4 @@
+--patch-module
+com.udasecurity.imageservice=_
+--add-reads
+com.udasecurity.imageservice=ALL-UNNAMED

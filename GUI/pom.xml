@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rajesh.securityproject</groupId>
+        <artifactId>SecurityProject</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>GUI</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.rajesh.securityproject</groupId>
+            <artifactId>SecurityService</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+         <dependency>
+        <groupId>com.rajesh.securityproject</groupId>
+        <artifactId>ImageService</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+        <!-- JavaFX dependencies -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>21</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <!-- Jar Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.udasecurity.gui.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Exec Plugin for running JavaFX -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.udasecurity.gui.Main</mainClass>
+                    <arguments>
+            <argument>--module-path</argument>
+            <argument>C:/Users/RAJESH~1/.m2/repository/org/openjfx/javafx-sdk-21/lib</argument>
+            <argument>--add-modules</argument>
+            <argument>javafx.controls,javafx.fxml</argument>
+        </arguments>
+                    <classpathScope>compile</classpathScope>
+                    <includePluginDependencies>true</includePluginDependencies>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
